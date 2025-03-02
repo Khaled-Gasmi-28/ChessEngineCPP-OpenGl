@@ -28,8 +28,13 @@ int main() {
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         return -1;
     }
+
     glDisable(GL_DEPTH_TEST);
     stbi_set_flip_vertically_on_load(true);
+
+    // Enable blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 #pragma endregion
 
     Shader Boardshader("Board.vert", "Board.frag");

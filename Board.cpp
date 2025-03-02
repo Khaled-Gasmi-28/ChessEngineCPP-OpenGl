@@ -3,22 +3,14 @@
 
 Board::Board() {
     InitBoard();
-    InitPieces();
 }
 
 Board::~Board() {
-
-    // Clean up dynamically allocated pieces
-    for (int i = 0; i < BOARD_SIZE; ++i) {
-        for (int j = 0; j < BOARD_SIZE; ++j) {
-            board[i][j]->~Piece();  // Delete each piece when done
-        }
-    }
-
     vao.Delete();
     vbo->Delete();
-    glDeleteBuffers(1, &EBO);
+    ebo->Delete();
     delete vbo;
+    delete ebo;
 }
 
 std::vector<float> Board::generateChessboardVertices() {
@@ -28,7 +20,7 @@ std::vector<float> Board::generateChessboardVertices() {
             float x = col * SQUARE_SIZE - 1.0f;
             float y = row * SQUARE_SIZE - 1.0f;
 
-            float color = (row + col) % 2 == 0 ? 0.8f : 0.3f; // Light gray and lighter black
+            float color = (row + col) % 2 == 0 ? 0.8f : 0.3f; // Light gray and darker gray
 
             vertices.insert(vertices.end(), {
                 x, y, 0.0f, color, color, color, // Bottom-left
@@ -54,54 +46,28 @@ std::vector<unsigned int> Board::generateChessboardIndices() {
 }
 
 void Board::InitBoard() {
-    // Initialize the board matrix to null (no pieces)
-    for (int i = 0; i < BOARD_SIZE; ++i) {
-        for (int j = 0; j < BOARD_SIZE; ++j) {
-            board[i][j] = nullptr;  // No piece in the square
-        }
-    }
+    // Generate vertices and indices for the chessboard
+    vertices = generateChessboardVertices();
+    indices = generateChessboardIndices();
+    indexCount = indices.size();
 
-    // Now initialize the pieces
-    InitPieces();
+    // Initialize VAO and VBO
+    vao.Bind();
+
+    vbo = new VBO(vertices.data(), vertices.size() * sizeof(float));
+    ebo = new EBO(indices.data(), indices.size() * sizeof(unsigned int));
+
+    vao.LinkAttri(*vbo, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*)0);  // Position
+    vao.LinkAttri(*vbo, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float))); // Color
+
+    vao.Unbind();
+    vbo->Unbind();
+    ebo->Unbind();
 }
 
 void Board::drawChessboard(Shader& shader) {
     shader.Activate();
-
-    // Loop through all the board positions
-    for (int row = 0; row < BOARD_SIZE; ++row) {
-        for (int col = 0; col < BOARD_SIZE; ++col) {
-            bool hasPiece = (board[row][col] != nullptr);  // Check if there's a piece
-
-            // Set the "hasPiece" uniform (1 if there's a piece, 0 if not)
-            glUniform1i(glGetUniformLocation(shader.ID, "hasPiece"), hasPiece);
-
-            if (hasPiece) {
-                // Draw piece using texture if present
-                Piece* piece = board[row][col];
-                piece->texture.Bind();  // Bind the texture for the piece
-                glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
-                piece->texture.Unbind();  // Unbind the texture after drawing
-            }
-            else {
-                // If no piece, draw an empty square with alternating colors
-                float color = (row + col) % 2 == 0 ? 0.8f : 0.3f;  // Light gray and darker gray
-                glUniform3f(glGetUniformLocation(shader.ID, "Color"), color, color, color);
-                glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);  // Empty square
-            }
-        }
-    }
-
+    vao.Bind();
+    glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     vao.Unbind();
-}
-
-void Board::InitPieces() {
-    // Initialize pieces on the board. This is where you can place your pieces.
-    // For simplicity, assuming we have two rooks for this example.
-    board[0][0] = new Piece(0, 0, "rook_white.png");
-    board[0][7] = new Piece(0, 7, "rook_white.png");
-    board[7][0] = new Piece(7, 0, "rook_white.png");
-    board[7][7] = new Piece(7, 7, "rook_white.png");
-
-    // Initialize other pieces (pawns, knights, etc.) similarly...
 }

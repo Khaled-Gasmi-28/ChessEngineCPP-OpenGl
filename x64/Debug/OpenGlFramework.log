@@ -1,5 +1,5 @@
 ﻿  Board.cpp
-  Piece.cpp
+D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\Board.cpp(52,32): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
   main.cpp
   Génération de code en cours...
   OpenGlFramework.vcxproj -> D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\x64\Debug\OpenGlFramework.exe

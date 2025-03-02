@@ -7,8 +7,6 @@
 #include "Board.h"
 #include "Global.h"
 
-
-
 int main() {
 
 #pragma region Initialise Window
@@ -40,11 +38,10 @@ int main() {
 #pragma region Game Loop
 
     while (!glfwWindowShouldClose(window)) {
-
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);  // Set a light grey background color
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Draw the chessboard (with pieces or empty squares)
+        // Draw the chessboard
         board.drawChessboard(shader);
 
         glfwSwapBuffers(window);
@@ -53,10 +50,8 @@ int main() {
 
 #pragma endregion
 
-
 #pragma region Destroy Objects
 
-    //board.~Board();
     glfwDestroyWindow(window);
     glfwTerminate();
 

@@ -2,9 +2,10 @@
 #define BOARD_H
 
 #include <vector>
-#include "Piece.h"
 #include "ShaderClass.h"
 #include "VAOClass.h"
+#include "VBOClass.h"
+#include "EBOClass.h"
 
 class Board {
 public:
@@ -15,8 +16,6 @@ public:
     std::vector<unsigned int> generateChessboardIndices();
     void drawChessboard(Shader& shader);
     void InitBoard();
-    void InitPieces();  // Initialize pieces on the board
-    void DrawPieces(Shader& shader);  // Draw pieces
 
 private:
     std::vector<float> vertices;
@@ -24,8 +23,7 @@ private:
     int indexCount;
     VAO vao;
     VBO* vbo;
-    GLuint EBO;
-    Piece* board[8][8];
+    EBO* ebo;
 };
 
 #endif

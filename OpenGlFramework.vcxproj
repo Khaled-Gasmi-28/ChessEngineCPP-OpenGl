@@ -175,11 +175,13 @@
     <ClInclude Include="VBOClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.frag" />
-    <None Include="default.vert" />
+    <None Include="Board.frag" />
+    <None Include="Board.vert" />
+    <None Include="Piece.frag" />
+    <None Include="Piece.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\OpenGl\OpenGlFramework\rook_white.png" />
+    <Image Include="rook_white.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

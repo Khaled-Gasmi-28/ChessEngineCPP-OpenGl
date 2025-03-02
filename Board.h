@@ -6,6 +6,7 @@
 #include "VAOClass.h"
 #include "VBOClass.h"
 #include "EBOClass.h"
+#include "Piece.h"
 
 class Board {
 public:
@@ -15,7 +16,9 @@ public:
     std::vector<float> generateChessboardVertices();
     std::vector<unsigned int> generateChessboardIndices();
     void drawChessboard(Shader& shader);
+    void drawPieces(Shader& shader);
     void InitBoard();
+    void InitPieces();
 
 private:
     std::vector<float> vertices;
@@ -24,6 +27,7 @@ private:
     VAO vao;
     VBO* vbo;
     EBO* ebo;
+    Piece* board[8][8];
 };
 
 #endif

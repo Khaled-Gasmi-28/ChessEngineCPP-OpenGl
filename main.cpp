@@ -31,7 +31,8 @@ int main() {
     glDisable(GL_DEPTH_TEST);
 #pragma endregion
 
-    Shader shader("default.vert", "default.frag");
+    Shader Boardshader("Board.vert", "Board.frag");
+    Shader PieceShader("Piece.vert", "Piece.frag");
 
     Board board;
 
@@ -42,7 +43,9 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Draw the chessboard
-        board.drawChessboard(shader);
+        board.drawChessboard(Boardshader);
+        // Draw the pieces
+        board.drawPieces(PieceShader);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -52,6 +55,7 @@ int main() {
 
 #pragma region Destroy Objects
 
+    //board.~Board();
     glfwDestroyWindow(window);
     glfwTerminate();
 

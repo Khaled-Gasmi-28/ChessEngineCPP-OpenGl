@@ -3,6 +3,7 @@
 
 Board::Board() {
     InitBoard();
+    InitPieces();
 }
 
 Board::~Board() {
@@ -11,6 +12,15 @@ Board::~Board() {
     ebo->Delete();
     delete vbo;
     delete ebo;
+
+    // Clean up dynamically allocated pieces
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            if (board[i][j] != nullptr) {
+                delete board[i][j];
+            }
+        }
+    }
 }
 
 std::vector<float> Board::generateChessboardVertices() {
@@ -65,9 +75,36 @@ void Board::InitBoard() {
     ebo->Unbind();
 }
 
+void Board::InitPieces() {
+    // Initialize pieces on the board. This is where you can place your pieces.
+    // For simplicity, assuming we have two rooks for this example.
+    board[0][0] = new Piece(0, 0, "rook_white.png");
+    board[0][7] = new Piece(0, 7, "rook_white.png");
+    board[7][0] = new Piece(7, 0, "rook_white.png");
+    board[7][7] = new Piece(7, 7, "rook_white.png");
+
+    // Initialize other pieces (pawns, knights, etc.) similarly...
+}
+
 void Board::drawChessboard(Shader& shader) {
     shader.Activate();
     vao.Bind();
     glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     vao.Unbind();
+}
+
+void Board::drawPieces(Shader& shader) {
+    shader.Activate();
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            if (board[i][j] != nullptr) {
+                board[i][j]->InitPiece();
+                board[i][j]->texture.Bind();
+                board[i][j]->vao.Bind();
+                glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+                board[i][j]->vao.Unbind();
+                board[i][j]->texture.Unbind();
+            }
+        }
+    }
 }

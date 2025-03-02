@@ -84,15 +84,21 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.frag">
+    <None Include="Board.frag">
       <Filter>Ressources\Shader</Filter>
     </None>
-    <None Include="default.vert">
+    <None Include="Board.vert">
+      <Filter>Ressources\Shader</Filter>
+    </None>
+    <None Include="Piece.vert">
+      <Filter>Ressources\Shader</Filter>
+    </None>
+    <None Include="Piece.frag">
       <Filter>Ressources\Shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\OpenGl\OpenGlFramework\rook_white.png">
+    <Image Include="rook_white.png">
       <Filter>Ressources\Texture</Filter>
     </Image>
   </ItemGroup>

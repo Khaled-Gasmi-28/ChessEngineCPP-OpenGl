@@ -10,7 +10,7 @@ Piece::~Piece() {
     if (vbo != nullptr) {
         vao.Delete();
         vbo->Delete();
-        //delete vbo;
+        delete vbo;
     }
 }
 

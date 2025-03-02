@@ -21,6 +21,7 @@ public:
     void InitPieces();
     void Delete();
 
+    int Square[64];
 private:
     std::vector<float> vertices;
     std::vector<unsigned int> indices;
@@ -29,6 +30,7 @@ private:
     VBO* vbo;
     EBO* ebo;
     Piece* board[8][8];
+
 };
 
 #endif

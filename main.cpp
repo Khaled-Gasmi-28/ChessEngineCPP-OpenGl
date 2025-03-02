@@ -40,12 +40,13 @@ int main() {
 
 #pragma endregion
 
+#pragma region Game Loop
+
     Shader Boardshader("Board.vert", "Board.frag");
     Shader PieceShader("Piece.vert", "Piece.frag");
 
     Board board;
 
-#pragma region Game Loop
 
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);  // Set a light grey background color

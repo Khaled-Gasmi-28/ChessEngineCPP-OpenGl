@@ -2,6 +2,7 @@
 
 Piece::Piece(int row, int col, const char* texturePath)
     : row(row), col(col), texture(texturePath, GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE) {
+
     InitPiece();
 }
 

@@ -1,2 +1,3 @@
-﻿  TextureClass.cpp
+﻿  Board.cpp
+D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\Board.cpp(62,32): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
   OpenGlFramework.vcxproj -> D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\x64\Debug\OpenGlFramework.exe

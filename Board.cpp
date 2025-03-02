@@ -81,9 +81,14 @@ void Board::InitPieces() {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (i % 2 == 0) {
+                Square[i * (j - 1) + j] = Piece::None;
+                std::cout << Square[i * (j - 1) + j] << std::endl;
                 continue;
             }
             board[i][j] = new Piece(i, j, "Textures/Bishop_Black.png");
+            Square[i * (j - 1) + j] = Piece::Bishop | Piece::Black;
+
+            std::cout << Square[i * (j - 1) + j] << std::endl;
         }
     }
 

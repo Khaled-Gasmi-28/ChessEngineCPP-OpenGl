@@ -26,7 +26,7 @@ void Piece::InitPiece() {
         x + 0.1f, y + 0.1f, 0.0f, 1.0f, 1.0f, // Top-right
         x, y + 0.1f, 0.0f, 0.0f, 1.0f  // Top-left
     };
-        
+
     // Initialize VBO if not already initialized
     if (vbo == nullptr) {
         vbo = new VBO(pieceVertices.data(), pieceVertices.size() * sizeof(float));
@@ -37,4 +37,3 @@ void Piece::InitPiece() {
     vao.LinkAttri(*vbo, 1, 2, GL_FLOAT, 5 * sizeof(float), (void*)(3 * sizeof(float))); // Texture coords
     vao.Unbind();
 }
-

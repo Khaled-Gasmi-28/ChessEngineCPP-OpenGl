@@ -28,6 +28,4 @@ private:
     Piece* board[8][8];
 };
 
-
 #endif
-

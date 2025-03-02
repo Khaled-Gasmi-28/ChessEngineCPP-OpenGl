@@ -21,9 +21,7 @@ public:
     VBO* vbo;
     VAO vao;
 private:
-    
+
 };
 
 #endif
-
-

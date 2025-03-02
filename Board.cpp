@@ -91,7 +91,7 @@ void Board::drawChessboard(Shader& shader) {
             }
         }
     }
-        
+
     vao.Unbind();
 }
 

@@ -1,16 +1,5 @@
 ﻿  Board.cpp
-  Camera.cpp
-  EBOClass.cpp
-  main.cpp
   Piece.cpp
-  ShaderClass.cpp
-  stb.cpp
-  TextureClass.cpp
-D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\TextureClass.cpp(32,30): warning C4244: 'argument' : conversion de 'GLuint' en 'GLfloat', perte possible de données
-  VAOClass.cpp
-D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\VAOClass.cpp(9,64): warning C4244: 'argument' : conversion de 'GLsizeiptr' en 'GLsizei', perte possible de données
-  VBOClass.cpp
+  main.cpp
   Génération de code en cours...
-  glad.c
-LINK : warning LNK4098: conflit entre la bibliothèque par défaut 'MSVCRT' et les autres bibliothèques ; utilisez /NODEFAULTLIB:library
   OpenGlFramework.vcxproj -> D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\x64\Debug\OpenGlFramework.exe

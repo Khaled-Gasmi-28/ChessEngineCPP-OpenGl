@@ -1,5 +1,5 @@
-//#include <glad/glad.h>
-//#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "ShaderClass.h"
 #include "VAOClass.h"
 #include "VBOClass.h"

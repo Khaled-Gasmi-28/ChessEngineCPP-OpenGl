@@ -1,9 +1,11 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <vector>
+#include <iostream>
+
 #include "ShaderClass.h"
 #include "VAOClass.h"
 #include "VBOClass.h"
-#include <vector>
 #include "Board.h"
 #include "Global.h"
 
@@ -35,6 +37,7 @@ int main() {
     // Enable blending
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 #pragma endregion
 
     Shader Boardshader("Board.vert", "Board.frag");

@@ -55,7 +55,9 @@ int main() {
 
 #pragma region Destroy Objects
 
-    //board.~Board();
+    Boardshader.Delete();
+    PieceShader.Delete();
+    board.Delete();
     glfwDestroyWindow(window);
     glfwTerminate();
 

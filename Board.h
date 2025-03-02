@@ -19,6 +19,7 @@ public:
     void drawPieces(Shader& shader);
     void InitBoard();
     void InitPieces();
+    void Delete();
 
 private:
     std::vector<float> vertices;

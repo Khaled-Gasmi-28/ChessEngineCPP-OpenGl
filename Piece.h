@@ -15,6 +15,7 @@ public:
     Piece(int row, int col, const char* texturePath);
     ~Piece();
     void InitPiece();
+    void Delete();
     Texture texture;  // Texture for the piece
     int row, col;  // Position on the board
 

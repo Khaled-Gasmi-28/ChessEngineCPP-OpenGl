@@ -78,10 +78,11 @@ void Board::InitBoard() {
 void Board::InitPieces() {
     // Initialize pieces on the board. This is where you can place your pieces.
     // For simplicity, assuming we have two rooks for this example.
-    board[0][0] = new Piece(0, 0, "rook_white.png");
-    board[0][7] = new Piece(0, 7, "rook_white.png");
-    board[7][0] = new Piece(7, 0, "rook_white.png");
-    board[7][7] = new Piece(7, 7, "rook_white.png");
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            board[i][j] = new Piece(i, j, "rook_white.png");
+        }
+    }
 
     // Initialize other pieces (pawns, knights, etc.) similarly...
 }
@@ -107,4 +108,17 @@ void Board::drawPieces(Shader& shader) {
             }
         }
     }
+}
+
+void Board::Delete() {
+
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            board[i][j]->Delete();
+        }
+    }
+
+    vao.Delete();
+    vbo->Delete();
+    ebo->Delete();
 }

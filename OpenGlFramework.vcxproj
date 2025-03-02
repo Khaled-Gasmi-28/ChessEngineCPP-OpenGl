@@ -181,7 +181,18 @@
     <None Include="Piece.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="rook_white.png" />
+    <Image Include="Textures\Bishop_Black.png" />
+    <Image Include="Textures\Bishop_White.png" />
+    <Image Include="Textures\King_Black.png" />
+    <Image Include="Textures\King_White.png" />
+    <Image Include="Textures\Knight_Black.png" />
+    <Image Include="Textures\Knight_White.png" />
+    <Image Include="Textures\Pawn_Black.png" />
+    <Image Include="Textures\Pawn_White.png" />
+    <Image Include="Textures\Queen_Black.png" />
+    <Image Include="Textures\Queen_White.png" />
+    <Image Include="Textures\Rook_Black.png" />
+    <Image Include="Textures\Rook_White.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

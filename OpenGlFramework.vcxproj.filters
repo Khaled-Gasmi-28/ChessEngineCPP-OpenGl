@@ -98,7 +98,40 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="rook_white.png">
+    <Image Include="Textures\Bishop_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Bishop_White.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\King_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\King_White.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Knight_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Knight_White.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Pawn_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Pawn_White.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Queen_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Queen_White.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Rook_Black.png">
+      <Filter>Ressources\Texture</Filter>
+    </Image>
+    <Image Include="Textures\Rook_White.png">
       <Filter>Ressources\Texture</Filter>
     </Image>
   </ItemGroup>

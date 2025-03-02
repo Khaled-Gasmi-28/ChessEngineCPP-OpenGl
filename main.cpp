@@ -29,6 +29,7 @@ int main() {
         return -1;
     }
     glDisable(GL_DEPTH_TEST);
+    stbi_set_flip_vertically_on_load(true);
 #pragma endregion
 
     Shader Boardshader("Board.vert", "Board.frag");

@@ -80,7 +80,10 @@ void Board::InitPieces() {
     // For simplicity, assuming we have two rooks for this example.
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            board[i][j] = new Piece(i, j, "rook_white.png");
+            if (i % 2 == 0) {
+                continue;
+            }
+            board[i][j] = new Piece(i, j, "Textures/Bishop_Black.png");
         }
     }
 
@@ -114,7 +117,9 @@ void Board::Delete() {
 
     for (int i = 0; i < BOARD_SIZE; ++i) {
         for (int j = 0; j < BOARD_SIZE; ++j) {
-            board[i][j]->Delete();
+            if (board[i][j] != nullptr) {
+                board[i][j]->Delete();
+            }
         }
     }
 

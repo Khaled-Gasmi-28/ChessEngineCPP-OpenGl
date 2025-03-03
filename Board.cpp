@@ -1,9 +1,15 @@
 #include "Board.h"
 #include "Global.h"
 
+// Initialize the static member outside the class
+const std::unordered_map<char, int> Piece::PieceTypeFromSymbol = {
+    {'k', Piece::King}, {'p', Piece::Pawn}, {'n', Piece::Knight},
+    {'b', Piece::Bishop}, {'r', Piece::Rook}, {'q', Piece::Queen}
+};
+
 Board::Board() {
+    InitPieces(START_FEN);
     InitBoard();
-    InitPieces();
 }
 
 Board::~Board() {
@@ -75,24 +81,74 @@ void Board::InitBoard() {
     ebo->Unbind();
 }
 
-void Board::InitPieces() {
+void Board::InitPieces(std::string FEN_String) {
     // Initialize pieces on the board. This is where you can place your pieces.
-    // For simplicity, assuming we have two rooks for this example.
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (i % 2 == 0) {
-                Square[i * (j - 1) + j] = Piece::None;
-                std::cout << Square[i * (j - 1) + j] << std::endl;
-                continue;
-            }
-            board[i][j] = new Piece(i, j, "Textures/Bishop_Black.png");
-            Square[i * (j - 1) + j] = Piece::Bishop | Piece::Black;
 
-            std::cout << Square[i * (j - 1) + j] << std::endl;
+    //initialse square array 
+    int file = 0;
+    int rank = 7;
+
+    for (char c : FEN_String)
+    {
+        if (c == '/') {
+            file = 0;
+            rank--;
+        }
+        else {
+            if (std::isdigit(c)) { 
+                file += c - '0';  
+            }
+            else {
+                int PieceColor = std::isupper(c) ? Piece::White : Piece::Black;
+                int PieceType = Piece::PieceTypeFromSymbol.at(std::tolower(c));
+                Square[rank * 8 + file] = PieceType | PieceColor;
+                file++;
+            }
         }
     }
 
-    // Initialize other pieces (pawns, knights, etc.) similarly...
+    //set up the Board for drawing
+    rank = 0;
+    file = 0;
+
+    for (int i = 0;i < 64;i++) {
+        /*
+        if (i % 8 == 0) {
+            std::cout << std::endl;
+        }
+        std::cout << Square[i] << " || ";
+        */
+
+        rank = i / 8;
+        file = i % 8;
+        if (Square[i] == 0) continue;
+        else board[rank][file] = ConvertIntToPiece(Square[i], rank, file);
+        
+    }
+}
+
+Piece* Board::ConvertIntToPiece(int SquareValue, int rank, int file) {
+    std::string TexturePath = "Textures/";
+
+    switch (SquareValue) {
+    case 9:  TexturePath += "King_Black"; break;
+    case 10: TexturePath += "Pawn_Black"; break;
+    case 11: TexturePath += "Knight_Black"; break;
+    case 12: TexturePath += "Queen_Black"; break;
+    case 13: TexturePath += "Bishop_Black"; break;
+    case 14: TexturePath += "Rook_Black"; break;
+    case 17: TexturePath += "King_White"; break;
+    case 18: TexturePath += "Pawn_White"; break;
+    case 19: TexturePath += "Knight_White"; break;
+    case 20: TexturePath += "Queen_White"; break;
+    case 21: TexturePath += "Bishop_White"; break;
+    case 22: TexturePath += "Rook_White"; break;
+    default: return nullptr; // Return nullptr if SquareValue is invalid
+    }
+
+    TexturePath += ".png";
+
+    return new Piece(rank, file, TexturePath.c_str());
 }
 
 void Board::drawChessboard(Shader& shader) {

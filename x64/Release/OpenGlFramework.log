@@ -1,0 +1,18 @@
+﻿  Board.cpp
+D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\Board.cpp(68,32): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+  Camera.cpp
+  EBOClass.cpp
+  main.cpp
+  Piece.cpp
+  ShaderClass.cpp
+  stb.cpp
+  TextureClass.cpp
+  VAOClass.cpp
+D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\VAOClass.cpp(9,64): warning C4244: 'argument' : conversion de 'GLsizeiptr' en 'GLsizei', perte possible de données
+  VBOClass.cpp
+  glad.c
+  Génération de code en cours
+  Previous IPDB not found, fall back to full compilation.
+  All 714 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  OpenGlFramework.vcxproj -> D:\OpenGlChess\OpenGlFramework\ChessEngineCPP-OpenGl\x64\Release\OpenGlFramework.exe

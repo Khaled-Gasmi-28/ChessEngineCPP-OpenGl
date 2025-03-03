@@ -18,7 +18,8 @@ public:
     void drawChessboard(Shader& shader);
     void drawPieces(Shader& shader);
     void InitBoard();
-    void InitPieces();
+    void InitPieces(std::string FEN_String);
+    Piece* ConvertIntToPiece(int SquareValue, int rank, int file);
     void Delete();
 
     int Square[64];

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "ShaderClass.h"
@@ -22,6 +23,8 @@ public:
 
     const static int White = 8;
     const static int Black = 16;
+
+    static const std::unordered_map<char, int> PieceTypeFromSymbol;
 
     Piece(int row, int col, const char* texturePath);
     ~Piece();
